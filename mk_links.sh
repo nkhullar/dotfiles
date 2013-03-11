@@ -6,6 +6,7 @@ do
     test "$file" == `basename $0` && continue
     test "$file" == ".git" && continue
     test "$file" == ".gitignore" && continue
+    test "$file" == ".tmp" && continue
 
     # remove the original file/symlink 
     test -e $HOME/$file && rm -rfv $HOME/$file
