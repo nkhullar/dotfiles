@@ -5,6 +5,7 @@ do
     # ignore the scipt itself and .git directory
     test "$file" == `basename $0` && continue
     test "$file" == ".git" && continue
+    test "$file" == ".gitignore" && continue
 
     # remove the original file/symlink 
     test -e $HOME/$file && rm -rfv $HOME/$file
