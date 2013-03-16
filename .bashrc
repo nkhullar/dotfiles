@@ -87,8 +87,8 @@ alias l='ls -CF'
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+if [ -e ~/.bash_alias ]; then
+    . ~/.bash_alias
 fi
 
 # enable programmable completion features (you don't need to enable
@@ -103,6 +103,8 @@ export PS1="[\u@\h:\w]$ "
 export LANG=en_US
 
 export PATH=$PATH:$HOME/bin:.
+
+export XTERM=xterm
 
 if [ `hostname -s` == "palm" ]
 then
