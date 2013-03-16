@@ -196,6 +196,8 @@ function SetPythonOptions()
 
     " Wrap at 72 chars for comments.
     setlocal formatoptions=cq textwidth=72 foldignore= wildignore+=*.py[co]
+
+    map <buffer> F :set foldmethod=indent<cr>
 endfunction
 
 autocmd FileType python call SetPythonOptions()
@@ -331,10 +333,6 @@ nmap <silent> <C-Up>        :wincmd k<CR>
 nmap <silent> <C-Down>      :wincmd j<CR>
 nmap <silent> <C-Left>      :wincmd h<CR>
 nmap <silent> <C-Right>     :wincmd l<CR>
-
-let g:SuperTabDefaultCompletionType = "<C-X><C-U>" 
-
-au FileType python map <buffer> F :set foldmethod=indent<cr>
 
 " yank to the system register (*) by default
 set clipboard=unnamed	
