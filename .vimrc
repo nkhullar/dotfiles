@@ -73,10 +73,6 @@ set wildignore=*.o,*~,*.pyc
 map j gj
 map k gk
 
-" Smart way to move between windows
-map <C-j> gT
-map <C-k> gt
-
 " sets the printing device to cp01
 "set pdev=cp01 
 "
@@ -183,11 +179,26 @@ set ofu=syntaxcomplete#Complete
 "
 " makes vim capable of guessing based on the filetype 
 filetype on
-"
+
 " Special indent settings for python
-autocmd BufRead,BufNewFile *.py syntax on 
-autocmd BufRead,BufNewFile *.py set ai
-autocmd BufRead *.py set smartindent cinwords="if,elif,else,for,while,try,except,finally,def,class"
+function SetPythonOptions()
+    " indent
+    setlocal tabstop=2
+    setlocal softtabstop=2
+    setlocal shiftwidth=2
+    setlocal smarttab
+    setlocal expandtab
+
+    setlocal smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
+
+    " more syntax highlighting
+    let python_highlight_all = 1
+
+    " Wrap at 72 chars for comments.
+    setlocal formatoptions=cq textwidth=72 foldignore= wildignore+=*.py[co]
+endfunction
+
+autocmd FileType python call SetPythonOptions()
 
 " Treat all files ending on .USER.INPUT as tcl scripts 
 au BufNewFile,BufRead *.USER.INPUT set filetype=tcl
@@ -259,7 +270,7 @@ augroup resCur
     endif
 augroup END
 
-            
+
 """"""""""""""""""
 "" Latex-suite
 """"""""""""""""""
@@ -322,9 +333,6 @@ nmap <silent> <C-Left>      :wincmd h<CR>
 nmap <silent> <C-Right>     :wincmd l<CR>
 
 let g:SuperTabDefaultCompletionType = "<C-X><C-U>" 
-
-" Remap VIM 0 to first non-blank character
-map 0 ^
 
 au FileType python map <buffer> F :set foldmethod=indent<cr>
 
