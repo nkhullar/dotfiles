@@ -1,0 +1,23 @@
+# enable mouse scroll up
+termcapinfo xterm* ti@:te@
+
+# remove vim window when exit
+altscreen on
+
+# don't display the copyright page
+startup_message off
+
+# detach on hangup - if my dial-up session fails, screen will simply
+# detach and let me re re-attach later.
+autodetach on
+
+# Scrollback buffer size in lines
+defscrollback 9999
+
+# The resultsing command give you a status line that
+#  looks like this:
+#   | Screens: 0* bash  <blanks zapped>         5:30PM  Fri, Jun/25/2004 |
+#  (The pipes indicate the edges of the xterm/console).
+
+# Green text, time, and date; windows in blue:
+hardstatus alwayslastline "%{=b}%{G} Screen(s): %{b}%w %=%{kG}%C%A  %D, %M/%d/%Y "
