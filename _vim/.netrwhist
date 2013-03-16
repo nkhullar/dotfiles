@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/srv/www/backend_all/backend_all/local_settings'
+let g:netrw_dirhist_2='/srv/www/backend_all/backend_all/backend'
+let g:netrw_dirhist_3='/home/jhshi/.dropbox'
+let g:netrw_dirhist_4='/home/jhshi/Dropbox/os161/src/user/bin/pwd'
+let g:netrw_dirhist_5='/home/jhshi/Dropbox/os161/src/user/testbin/crash'
+let g:netrw_dirhist_6='/var/log'
