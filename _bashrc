@@ -116,7 +116,5 @@ then
     export PATH=$PATH:$OS161_ROOT/tools/bin
 fi
 
-if [ `hostname` == "zion" ]
-then
-    export PATH=$PATH:$HOME/os161/tools/bin
-fi
+# rock into vi mode
+set -o vi

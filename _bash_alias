@@ -11,11 +11,11 @@ unalias ls >/dev/null 2>&1
 unalias ll >/dev/null 2>&1
 unalias grep >/dev/null 2>&1
 
-alias ls="ls --color=auto"
-alias grep="grep --color=auto"
+alias ls="ls --color=always"
+alias grep="grep --color=always"
 
 function ll() {
-    ls -alF "$@" | more;
+    ls -alF "$@" | more -s;
 }
 
 # some directories
