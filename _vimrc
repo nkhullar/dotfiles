@@ -212,13 +212,13 @@ au BufNewFile,BufRead *.USER.INPUT set filetype=tcl
 "
 if v:version > 700
     " only turn spell checking on for certain file types
-    function! Text()
+    function Text()
         setlocal spell spelllang=en_us
         set tw=79
     endfunction
 
-    autocmd BufNewFile,BufRead *.tex        Text()
-    autocmd BufNewFile,BufRead README       Text()
+    autocmd BufNewFile,BufRead *.tex    call Text()
+    autocmd BufNewFile,BufRead README   call Text()
 endif
 
 
