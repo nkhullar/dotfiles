@@ -1,5 +1,7 @@
-# enable mouse scroll up
-termcapinfo xterm* ti@:te@
+# 256 colors
+attrcolor b ".I"
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+defbce on
 
 # remove vim window when exit
 altscreen on
