@@ -338,6 +338,3 @@ nmap <silent> <C-Right>     :wincmd l<CR>
 
 " yank to the system register (*) by default
 set clipboard=unnamed	
-
-" highlight current line and column
-set cursorline
