@@ -196,8 +196,10 @@ function SetPythonOptions()
 
     " Wrap at 72 chars for comments.
     setlocal formatoptions=cq textwidth=72 foldignore= wildignore+=*.py[co]
+	
+	" highlight current column
+	set cursorcolumn
 
-    map <buffer> F :set foldmethod=indent<cr>
 endfunction
 
 autocmd FileType python call SetPythonOptions()
@@ -336,3 +338,6 @@ nmap <silent> <C-Right>     :wincmd l<CR>
 
 " yank to the system register (*) by default
 set clipboard=unnamed	
+
+" highlight current line and column
+set cursorline
