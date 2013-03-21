@@ -338,3 +338,15 @@ nmap <silent> <C-Right>     :wincmd l<CR>
 
 " yank to the system register (*) by default
 set clipboard=unnamed	
+
+" hightlight current line with proper background, not underline
+function HighLightCurrentLine ()
+	setlocal cursorline
+    hi CursorLine cterm=None ctermbg=DarkGrey
+endfunction
+
+" only highlight current line in active window
+au BufEnter * call HighLightCurrentLine()
+au BufLeave * setlocal nocursorline
+
+
