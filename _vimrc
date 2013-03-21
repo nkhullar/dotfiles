@@ -344,4 +344,16 @@ set cursorline
 hi CursorLine cterm=None
 hi CursorLineNR cterm=Bold ctermbg=Cyan
 
+" always show the status line
+set laststatus=2
 
+" status line format
+set statusline=
+set statusline+=%<              " line start
+set statusline+=%-40F\          " file full path
+set statusline+=%=              " right align
+set statusline+=%10([%l,%c]%)\  " cursor pos
+set statusline+=%P\             " persentage
+
+
+hi StatusLine cterm=bold ctermbg=DarkGray ctermfg=Cyan
