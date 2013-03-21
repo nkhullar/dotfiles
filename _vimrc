@@ -356,4 +356,4 @@ set statusline+=%10([%l,%c]%)\  " cursor pos
 set statusline+=%P\             " persentage
 
 
-hi StatusLine cterm=bold ctermbg=DarkGray ctermfg=Cyan
+hi StatusLine cterm=bold ctermbg=DarkGray ctermfg=White
