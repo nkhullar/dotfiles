@@ -348,12 +348,17 @@ hi CursorLineNR cterm=Bold ctermbg=Cyan
 set laststatus=2
 
 " status line format
+" clear status line
 set statusline=
-set statusline+=%<              " line start
-set statusline+=%-40F\          " file full path
-set statusline+=%=              " right align
-set statusline+=%10([%l,%c]%)\  " cursor pos
-set statusline+=%P\             " persentage
-
+" line start
+set statusline+=%<
+" file full path, type and flags
+set statusline+=%F\ %y%m%r
+" right align
+set statusline+=%=              
+" cursor pos
+set statusline+=%([%l/%L,%c]%)\  
+" persentage
+set statusline+=%P
 
 hi StatusLine cterm=bold ctermbg=DarkGray ctermfg=White
