@@ -15,7 +15,7 @@ alias ls="ls --color=always"
 alias grep="grep --color=always"
 
 function ll() {
-    ls -alF "$@" | more -s;
+    ls -alhF "$@" | more -s;
 }
 
 # some directories
