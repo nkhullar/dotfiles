@@ -362,3 +362,6 @@ set statusline+=%([%l/%L,%c]%)\
 set statusline+=%P
 
 hi StatusLine cterm=bold ctermbg=DarkGray ctermfg=White
+
+" for instant markdown
+let g:instant_markdown_slow = 0
