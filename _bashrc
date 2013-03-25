@@ -118,3 +118,12 @@ fi
 
 # rock into vi mode
 set -o vi
+
+change_tmux_window_title() {
+    if [ "$PWD" != "$LPWD" ]
+    then 
+        LPWD="$PWD"
+        tmux rename-window ${PWD//*\//}
+    fi 
+}
+export PROMPT_COMMAND=change_tmux_window_title
