@@ -201,6 +201,7 @@ function SetPythonOptions()
 	setlocal cursorcolumn
     hi CursorColumn cterm=None ctermbg=DarkGrey
 
+    setlocal colorcolumn=
 endfunction
 
 autocmd FileType python call SetPythonOptions()
@@ -371,3 +372,5 @@ let g:instant_markdown_slow = 0
 set textwidth=80
 set colorcolumn=+1
 hi ColorColumn ctermbg=DarkGrey
+
+hi Pmenu cterm=bold ctermbg=5 ctermfg=White
