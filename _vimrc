@@ -194,11 +194,12 @@ function SetPythonOptions()
     " more syntax highlighting
     let python_highlight_all = 1
 
-    " Wrap at 72 chars for comments.
-    setlocal formatoptions=cq textwidth=72 foldignore= wildignore+=*.py[co]
+    " Wrap at 80 chars for comments.
+    setlocal formatoptions=cq textwidth=80 foldignore= wildignore+=*.py[co]
 	
 	" highlight current column
-	set cursorcolumn
+	setlocal cursorcolumn
+    hi CursorColumn cterm=None ctermbg=DarkGrey
 
 endfunction
 
@@ -365,3 +366,8 @@ hi StatusLine cterm=bold ctermbg=DarkGray ctermfg=White
 
 " for instant markdown
 let g:instant_markdown_slow = 0
+
+" highlight the column after textwidth
+set textwidth=80
+set colorcolumn=+1
+hi ColorColumn ctermbg=DarkGrey
