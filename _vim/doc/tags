@@ -1,3 +1,11 @@
+:GitGutterDisable	gitgutter.txt	/*:GitGutterDisable*
+:GitGutterEnable	gitgutter.txt	/*:GitGutterEnable*
+:GitGutterLineHighlightsDisable	gitgutter.txt	/*:GitGutterLineHighlightsDisable*
+:GitGutterLineHighlightsEnable	gitgutter.txt	/*:GitGutterLineHighlightsEnable*
+:GitGutterLineHighlightsToggle	gitgutter.txt	/*:GitGutterLineHighlightsToggle*
+:GitGutterNextHunk	gitgutter.txt	/*:GitGutterNextHunk*
+:GitGutterPrevHunk	gitgutter.txt	/*:GitGutterPrevHunk*
+:GitGutterToggle	gitgutter.txt	/*:GitGutterToggle*
 :SpellAutoDisable	vimspell.txt	/*:SpellAutoDisable*
 :SpellAutoEnable	vimspell.txt	/*:SpellAutoEnable*
 :SpellChangeLanguage	vimspell.txt	/*:SpellChangeLanguage*
@@ -13,6 +21,13 @@ Alt-C	latex-suite.txt	/*Alt-C*
 Alt-I	latex-suite.txt	/*Alt-I*
 Alt-L	latex-suite.txt	/*Alt-L*
 BibTeX	latexhelp.txt	/*BibTeX*
+GitGutter	gitgutter.txt	/*GitGutter*
+GitGutterCommands	gitgutter.txt	/*GitGutterCommands*
+GitGutterContents	gitgutter.txt	/*GitGutterContents*
+GitGutterFAQ	gitgutter.txt	/*GitGutterFAQ*
+GitGutterInstallation	gitgutter.txt	/*GitGutterInstallation*
+GitGutterIntroduction	gitgutter.txt	/*GitGutterIntroduction*
+GitGutterUsage	gitgutter.txt	/*GitGutterUsage*
 IMAP_PutTextWithMovement	latex-suite.txt	/*IMAP_PutTextWithMovement*
 Imap_DeleteEmptyPlaceHolders	latex-suite.txt	/*Imap_DeleteEmptyPlaceHolders*
 Imap_FreezeImap	latex-suite.txt	/*Imap_FreezeImap*
@@ -404,6 +419,7 @@ g:SuperTabMappingTabLiteral	supertab.txt	/*g:SuperTabMappingTabLiteral*
 g:SuperTabNoCompleteAfter	supertab.txt	/*g:SuperTabNoCompleteAfter*
 g:SuperTabNoCompleteBefore	supertab.txt	/*g:SuperTabNoCompleteBefore*
 g:SuperTabRetainCompletionDuration	supertab.txt	/*g:SuperTabRetainCompletionDuration*
+gitgutter.txt	gitgutter.txt	/*gitgutter.txt*
 greek-letter-mappings	latex-suite.txt	/*greek-letter-mappings*
 headings	latexhelp.txt	/*headings*
 hyph-	latexhelp.txt	/*hyph-*
@@ -1027,3 +1043,8 @@ vimspell-todo	vimspell.txt	/*vimspell-todo*
 vimspell.txt	vimspell.txt	/*vimspell.txt*
 vimspell_default_language	vimspell.txt	/*vimspell_default_language*
 why-IMAP	latex-suite.txt	/*why-IMAP*
+xml-plugin-callbacks	xml-plugin.txt	/*xml-plugin-callbacks*
+xml-plugin-html	xml-plugin.txt	/*xml-plugin-html*
+xml-plugin-mappings	xml-plugin.txt	/*xml-plugin-mappings*
+xml-plugin-settings	xml-plugin.txt	/*xml-plugin-settings*
+xml-plugin.txt	xml-plugin.txt	/*xml-plugin.txt*
