@@ -73,12 +73,10 @@ set wildignore=*.o,*~,*.pyc
 map j gj
 map k gk
 
-" sets the printing device to cp01
-"set pdev=cp01 
-"
-" Printing options such syntax and paper size 
-" set printoptions=paper:A4,syntax:y
-"
+""""""""""""""""""""""""""""
+"" The TAB key
+"""""""""""""""""""""""""""
+
 " spaces instead of tabs
 set expandtab
 
@@ -89,23 +87,13 @@ set softtabstop=4
 " autoindent uses 4 characters
 set shiftwidth=4
 
-" guess indentation based on previous lines
-" set autoindent
-" C style indent
-" set cindent
-" smartindent tried to indent based on filetype 
+" try to indent based on filetype 
 set smartindent
 
-"set cinkeys=0{,0},:,0#,!^F
-" set indentexpr 
-"
-"   " Expand the command line using tab
-"   set wildchar=<Tab>
-"
-"   "#When on, a <Tab> in front of a line inserts blanks according to
-"   "'shiftwidth'.  'tabstop' or 'softtabstop' is used in other places.  A
-"   "<BS> will delete a 'shiftwidth' worth of space at the start of the
-"   "line.
+"#When on, a <Tab> in front of a line inserts blanks according to
+"'shiftwidth'.  'tabstop' or 'softtabstop' is used in other places.  A
+"<BS> will delete a 'shiftwidth' worth of space at the start of the
+"line.
 set smarttab
 "
 "   " Allows backspace over anything in insert mode
@@ -120,9 +108,6 @@ map <F4> : !make all <CR>
 "search tag file up, until root directory
 set tags=./tags;
 set tagstack
-
-"code fold method
-" set foldmethod=syntax
 
 "remove scratch/preview window
 set completeopt=menu
@@ -166,8 +151,6 @@ function SetPythonOptions()
     setlocal tabstop=2
     setlocal softtabstop=2
     setlocal shiftwidth=2
-    setlocal smarttab
-    setlocal expandtab
 
     setlocal smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
 
@@ -184,10 +167,21 @@ function SetPythonOptions()
     setlocal colorcolumn=
 endfunction
 
-autocmd FileType python call SetPythonOptions()
+function SetXmlOptions()
+    " indent
+    setlocal tabstop=2
+    setlocal softtabstop=2
+    setlocal shiftwidth=2
 
-" Treat all files ending on .USER.INPUT as tcl scripts 
-au BufNewFile,BufRead *.USER.INPUT set filetype=tcl
+	" highlight current column
+	setlocal cursorcolumn
+    hi CursorColumn cterm=None ctermbg=DarkGrey
+
+    setlocal colorcolumn=
+endfunction
+
+autocmd FileType python call SetPythonOptions()
+autocmd FileType xml,xsd,html call SetXmlOptions()
 
 
 """""""""""""""
