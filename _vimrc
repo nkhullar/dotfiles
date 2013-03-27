@@ -177,6 +177,7 @@ function SetXmlOptions()
 	setlocal cursorcolumn
     hi CursorColumn cterm=None ctermbg=DarkGrey
 
+    setlocal textwidth=0
     setlocal colorcolumn=
 endfunction
 
@@ -326,7 +327,7 @@ nmap <C-h>      gT
 nmap <C-l>      gt
 
 " yank to the system register (*) by default
-set clipboard=unnamed	
+set clipboard=unnamedplus
 
 " hightlight current line num with proper background, not underline
 set cursorline
