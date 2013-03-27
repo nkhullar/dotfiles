@@ -137,7 +137,6 @@ set virtualedit=block
 "" Shortcuts
 """"""""""""""
 
-" Remember that ZZ will save and quit
 " Correct typos
 command! Q  quit
 command! W  write
@@ -148,25 +147,9 @@ command! Wq wq
 " as:
 set formatprg=par\ -w79
 
-" The formatprg option in Vim tells it which program to use for formatting
-" of
-" the text when one of the gq commands is used. Notice that the space
-" between
-" the program name and its option is escaped with a backslash.
-" map <F6> {!}par
-" nmap <F11> 1G=G<cr>  
-"
 " Remap ctrl-] to Enter and ctrl-T to esc to make help sane.
 " :au filetype help :nnoremap <buffer><CR> <c-]>
 " :au filetype help :nnoremap <buffer><BS> <c-T>
-"
-" Move freely in wrapped lines
-"imap <silent> <Down> <C-o>gj
-"imap <silent> <Up> <C-o>gk
-"nmap <silent> <Down> gj
-"nmap <silent> <Up> gk
-"
-"
 "
 "
 """"""""""""""""""
@@ -174,11 +157,8 @@ set formatprg=par\ -w79
 """"""""""""""""""
 "
 " i.e. opens the latex-suite when a .tex file is opened. 
-filetype plugin indent on
 set ofu=syntaxcomplete#Complete
-"
-" makes vim capable of guessing based on the filetype 
-filetype on
+
 
 " Special indent settings for python
 function SetPythonOptions()
@@ -331,12 +311,25 @@ endif
 let g:EclimProjectTreeAutoOpen=1 
 let g:EclimProjectTreeExpandPathOnOpen=1
 
-" Switching between windows more easily
-" Ctl + Arrow keys
-nmap <silent> <C-Up>        :wincmd k<CR>
-nmap <silent> <C-Down>      :wincmd j<CR>
-nmap <silent> <C-Left>      :wincmd h<CR>
-nmap <silent> <C-Right>     :wincmd l<CR>
+
+" Fix arrow keys in tmux
+if &term =~ '^screen'
+    " tmux will send xterm-style keys when its xterm-keys option is on
+    execute "set <xUp>=\e[1;*A"
+    execute "set <xDown>=\e[1;*B"
+    execute "set <xRight>=\e[1;*C"
+    execute "set <xLeft>=\e[1;*D"
+endif
+
+" Switching between windows use Ctrl + arrow
+nmap <C-Up>        :wincmd k<CR>
+nmap <C-Down>      :wincmd j<CR>
+nmap <C-Left>      :wincmd h<CR>
+nmap <C-Right>     :wincmd l<CR>
+
+" Switch between tabs use ctrl + h,l
+nmap <C-h>      gT
+nmap <C-l>      gt
 
 " yank to the system register (*) by default
 set clipboard=unnamed	
@@ -374,3 +367,9 @@ set colorcolumn=+1
 hi ColorColumn ctermbg=DarkGrey
 
 hi Pmenu cterm=bold ctermbg=5 ctermfg=White
+
+" makes vim capable of guessing based on the filetype 
+" and enable file type based plugin
+" This must be put at the end of vimrc
+filetype on
+filetype plugin indent on
