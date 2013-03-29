@@ -115,12 +115,3 @@ then
 
     export PATH=$PATH:$OS161_ROOT/tools/bin
 fi
-
-change_tmux_window_title() {
-    if [ "$PWD" != "$LPWD" ]
-    then 
-        LPWD="$PWD"
-        tmux rename-window ${PWD//*\//}
-    fi 
-}
-export PROMPT_COMMAND=change_tmux_window_title
