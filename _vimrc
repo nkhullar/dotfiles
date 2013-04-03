@@ -193,11 +193,11 @@ if v:version > 700
     " only turn spell checking on for certain file types
     function Text()
         setlocal spell spelllang=en_us
-        set tw=79
     endfunction
 
     autocmd BufNewFile,BufRead *.tex    call Text()
     autocmd BufNewFile,BufRead README   call Text()
+    autocmd BufNewFile,BufRead *.markdown   call Text()
 endif
 
 
