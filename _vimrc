@@ -54,7 +54,7 @@ set undoreload=9999
 set autoread
 
 " Try to store all swp files in Dropbox
-set dir=$HOME/Dropbox/.tmp/.vim//,.
+set dir=$HOME/Dropbox/dotfiles/.tmp/.vim//,.
 
 " No annoying blinking or noise
 set novisualbell 
@@ -167,6 +167,16 @@ function SetPythonOptions()
     setlocal colorcolumn=
 endfunction
 
+function SetRubyOptions()
+    " indent
+    setlocal tabstop=2
+    setlocal softtabstop=2
+    setlocal shiftwidth=2
+
+    setlocal colorcolumn=
+endfunction
+
+
 function SetXmlOptions()
     " indent
     setlocal tabstop=2
@@ -182,6 +192,7 @@ function SetXmlOptions()
 endfunction
 
 autocmd FileType python call SetPythonOptions()
+autocmd FileType ruby call SetRubyOptions()
 autocmd FileType xml,xsd,html call SetXmlOptions()
 
 
