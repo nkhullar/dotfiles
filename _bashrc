@@ -121,3 +121,9 @@ then
 
     export PATH=$PATH:$OS161_ROOT/tools/bin
 fi
+
+# fire up eclimd daemon if haven't done so
+ps acx | grep "eclimd" >/dev/null
+if [ $? -ne 0 ]; then
+    eclimd >/dev/null 2>&1 &
+fi
