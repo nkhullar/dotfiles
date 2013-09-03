@@ -555,3 +555,6 @@ function! WatchForChanges(bufname, ...)
   " echo msg
   let @"=reg_saved
 endfunction
+
+
+au BufNewFile,BufRead *.log :WatchForChanges
