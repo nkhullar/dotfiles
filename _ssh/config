@@ -1,0 +1,15 @@
+Host timberlake
+    HostName timberlake.cse.buffalo.edu
+    User jinghaos
+
+Host underground
+    HostName underground.cse.buffalo.edu
+    User jinghaos
+
+Host highgate
+    HostName highgate.cse.buffalo.edu
+    User jinghaos
+
+Host pollux
+    HostName pollux.cse.buffalo.edu
+    User jinghaos
