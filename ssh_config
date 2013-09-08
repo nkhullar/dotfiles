@@ -13,3 +13,7 @@ Host highgate
 Host pollux
     HostName pollux.cse.buffalo.edu
     User jinghaos
+
+Host charlie
+    Hostname charlie.cse.buffalo.edu
+    user jinghaos
