@@ -18,7 +18,3 @@ do
     # make the symlink
     ln -sfv $source $target
 done
-
-# deal ssh with sepcial attention, since it's machine specific, so we just sync
-# it's config file, without ssh keys
-ln -sfv ${PWD}/ssh_config $HOME/.ssh/config
