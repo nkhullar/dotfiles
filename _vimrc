@@ -164,7 +164,6 @@ function SetPythonOptions()
 	setlocal cursorcolumn
     hi CursorColumn cterm=None ctermbg=DarkGrey
 
-    setlocal colorcolumn=
 endfunction
 
 function SetRubyOptions()
