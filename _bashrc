@@ -120,10 +120,12 @@ then
     export PATH=$PATH:$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools
 
     export PATH=$PATH:$OS161_ROOT/tools/bin
+elif [ `hostname -s` == "ubuntu-vm" ]
+then
+    ANDROID_SDK_ROOT=/opt/android-sdk-linux
+    export PATH=$PATH:$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools
+
 fi
 
 # fire up eclimd daemon if haven't done so
-ps acx | grep "eclimd" >/dev/null
-if [ $? -ne 0 ]; then
-    eclimd >/dev/null 2>&1 &
-fi
+# pgrep "eclimd" >/dev/null || /opt/eclipse/eclimd >/dev/null 2>&1 &
