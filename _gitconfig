@@ -6,3 +6,5 @@
 	email = jinghaos@buffalo.edu
 [color]
 	ui = true
+[push]
+	default = matching
