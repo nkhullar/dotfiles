@@ -17,3 +17,11 @@ Host pollux
 Host charlie
     Hostname charlie.cse.buffalo.edu
     user jinghaos
+
+Host euston
+    Hostname euston.cse.buffalo.edu
+    user jinghaos
+
+Host embankment
+    Hostname embankment.cse.buffalo.edu
+    user jinghaos
