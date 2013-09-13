@@ -1,7 +1,6 @@
 " Author:  Eric Van Dewoestine
 "
 " Description: {{{
-"   see http://eclim.org/vim/ruby/index.html
 "
 " License:
 "
@@ -24,48 +23,58 @@
 
 " Global Variables {{{
 
-if !exists("g:EclimRubyValidate")
-  let g:EclimRubyValidate = 1
+if !exists("g:EclimCValidate")
+  let g:EclimCValidate = 1
 endif
 
-if !exists("g:EclimRubySyntasticEnabled")
-  let g:EclimRubySyntasticEnabled = 0
+if !exists("g:EclimCSyntasticEnabled")
+  let g:EclimCSyntasticEnabled = 0
+endif
+
+if !exists('g:EclimCCallHierarchyDefaultAction')
+  let g:EclimCCallHierarchyDefaultAction = g:EclimDefaultFileOpenAction
 endif
 
 " }}}
 
 " Options {{{
 
-exec 'setlocal ' . g:EclimCompletionMethod . '=eclim#ruby#complete#CodeComplete'
+exec 'setlocal ' . g:EclimCompletionMethod . '=eclim#c#complete#CodeComplete'
 
 " disable syntastic
-if exists('g:loaded_syntastic_plugin') && !g:EclimRubySyntasticEnabled
-  let g:syntastic_ruby_checkers = []
+if exists('g:loaded_syntastic_plugin') && !g:EclimCSyntasticEnabled
+  let g:syntastic_c_checkers = []
 endif
 
 " }}}
 
 " Autocmds {{{
 
-augroup eclim_ruby
+augroup eclim_c
   autocmd! BufWritePost <buffer>
-  autocmd BufWritePost <buffer> call eclim#lang#UpdateSrcFile('ruby')
+  autocmd BufWritePost <buffer> call eclim#lang#UpdateSrcFile('c')
 augroup END
 
 " }}}
 
 " Command Declarations {{{
 
-command! -nargs=0 -buffer Validate :call eclim#lang#UpdateSrcFile('ruby', 1)
+command! -nargs=0 -buffer Validate :call eclim#lang#UpdateSrcFile('c', 1)
 
-if !exists(":RubySearch")
+if !exists(":CSearch")
   command -buffer -nargs=*
-    \ -complete=customlist,eclim#ruby#search#CommandCompleteRubySearch
-    \ RubySearch :call eclim#ruby#search#Search('<args>')
+    \ -complete=customlist,eclim#c#search#CommandCompleteCSearch
+    \ CSearch :call eclim#c#search#Search('<args>')
 endif
 
-if !exists(":RubySearchContext")
-  command -buffer RubySearchContext :call eclim#ruby#search#SearchContext()
+if !exists(":CSearchContext")
+  command -buffer CSearchContext :call eclim#c#search#SearchContext()
+endif
+
+if !exists(":CCallHierarchy")
+  command -buffer -bang CCallHierarchy
+    \ :call eclim#lang#hierarchy#CallHierarchy(
+      \ 'c', g:EclimCCallHierarchyDefaultAction, '<bang>')
 endif
 
 " }}}

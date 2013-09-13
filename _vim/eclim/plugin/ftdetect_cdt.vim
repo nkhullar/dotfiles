@@ -1,8 +1,11 @@
 " Author:  Eric Van Dewoestine
 "
-" License: {{{
+" Description: {{{
+"   Vim file type detection script for eclim.
 "
-" Copyright (C) 2005 - 2013  Eric Van Dewoestine
+" License:
+"
+" Copyright (C) 2005 - 2011  Eric Van Dewoestine
 "
 " This program is free software: you can redistribute it and/or modify
 " it under the terms of the GNU General Public License as published by
@@ -19,21 +22,7 @@
 "
 " }}}
 
-" Command Declarations {{{
-
-if !exists(":RubyInterpreterList")
-  command -buffer RubyInterpreterList
-    \ :call eclim#dltk#interpreter#ListInterpreters('ruby')
-  command -buffer -nargs=*
-    \ -complete=customlist,eclim#dltk#interpreter#CommandCompleteInterpreterAdd
-    \ RubyInterpreterAdd
-    \ :call eclim#ruby#interpreter#AddInterpreter('<args>')
-  command -buffer -nargs=1
-    \ -complete=customlist,eclim#ruby#interpreter#CommandCompleteInterpreterPath
-    \ RubyInterpreterRemove
-    \ :call eclim#dltk#interpreter#RemoveInterpreter('ruby', '<args>')
-endif
-
-" }}}
+autocmd BufRead .cproject
+  \ call EclimSetXmlFileType({'cproject': 'eclipse_cproject'})
 
 " vim:ft=vim:fdm=marker

@@ -1,7 +1,7 @@
 " Author:  Eric Van Dewoestine
 "
 " Description: {{{
-"   see http://eclim.org/vim/javascript/index.html
+"   see http://eclim.org/vim/c/validate.html
 "
 " License:
 "
@@ -22,25 +22,23 @@
 "
 " }}}
 
+" Global Variables {{{
+
+if !exists("g:EclimCppSyntasticEnabled")
+  let g:EclimCppSyntasticEnabled = 0
+endif
+
+" }}}
+
 " Options {{{
 
-exec 'setlocal ' . g:EclimCompletionMethod . '=eclim#javascript#complete#CodeComplete'
+" disable syntastic
+if exists('g:loaded_syntastic_plugin') && !g:EclimCppSyntasticEnabled
+  let g:syntastic_cpp_checkers = []
+endif
 
 " }}}
 
-" Autocmds {{{
-
-augroup eclim_javascript
-  autocmd! BufWritePost <buffer>
-  autocmd BufWritePost <buffer> call eclim#javascript#util#UpdateSrcFile(0)
-augroup END
-
-" }}}
-
-" Command Declarations {{{
-
-command! -nargs=0 -buffer Validate :call eclim#javascript#util#UpdateSrcFile(1)
-
-" }}}
+runtime eclim/ftplugin/c.vim
 
 " vim:ft=vim:fdm=marker

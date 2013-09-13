@@ -1,7 +1,7 @@
 " Author:  Eric Van Dewoestine
 "
 " Description: {{{
-"   see http://eclim.org/vim/ruby/complete.html
+"  Syntax file for eclipse cd .cproject files.
 "
 " License:
 "
@@ -22,15 +22,6 @@
 "
 " }}}
 
-" Script Varables {{{
-  let s:complete_command =
-    \ '-command ruby_complete -p "<project>" -f "<file>" -o <offset> -e <encoding>'
-" }}}
-
-" CodeComplete(findstart, base) {{{
-" Handles code completion.
-function! eclim#ruby#complete#CodeComplete(findstart, base)
-  return eclim#lang#CodeComplete(s:complete_command, a:findstart, a:base)
-endfunction " }}}
+runtime! syntax/xml.vim
 
 " vim:ft=vim:fdm=marker
