@@ -25,3 +25,8 @@ Host euston
 Host embankment
     Hostname embankment.cse.buffalo.edu
     user jinghaos
+
+Host backend
+    Hostname backend.phone-lab.org
+    User jinghaos
+
