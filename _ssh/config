@@ -20,11 +20,11 @@ Host charlie
 
 Host euston
     Hostname euston.cse.buffalo.edu
-    user jinghaos
+    User jinghaos
 
 Host embankment
     Hostname embankment.cse.buffalo.edu
-    user jinghaos
+    User jinghaos
 
 Host backend
     Hostname backend.phone-lab.org
