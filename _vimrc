@@ -2,7 +2,7 @@
 set nocompatible
 
 " Turns on syntax highlighting 
-syntax on 
+syntax on
 
 " Set the syntax color scheme 
 colors elflord
