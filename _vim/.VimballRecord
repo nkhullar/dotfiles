@@ -1,2 +1,3 @@
 supertab.vmb: call delete('/home/jhshi/.vim/doc/supertab.txt')|call delete('/home/jhshi/.vim/plugin/supertab.vim')
 DrawIt.vba: call delete('/home/jhshi/.vim/plugin/DrawItPlugin.vim')|call delete('/home/jhshi/.vim/plugin/cecutil.vim')|call delete('/home/jhshi/.vim/autoload/DrawIt.vim')|call delete('/home/jhshi/.vim/doc/DrawIt.txt')
+zenburn.vba: call delete('/home/jhshi/.vim/colors/zenburn.vim')
