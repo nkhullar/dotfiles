@@ -33,17 +33,19 @@ command -nargs=* -complete=help H vertical belowright help <args>
 
 set shell=/bin/bash\ -l
 
-"Set terminal title to Vim + filename
-set title
-
 " Show (partial) command in the last line of the screen.
 set showcmd
 
 " Set history 
-set history=99999
+set history=9999
 
 " Persist undo
-set undodir=$HOME/Dropbox/dotfiles/.tmp/.vim//,.
+if isdirectory(expand("$HOME/Dropbox/.vimundo"))
+    set undodir=$HOME/Dropbox/.vimundo//
+else
+    silent !mkdir -p $HOME/.vimundo
+    set undodir=$HOME/.vimundo//
+end
 set undofile
 "maximum number of changes that can be undone
 set undolevels=9999 
@@ -53,8 +55,9 @@ set undoreload=9999
 " Set to auto read when a file is changed from the outside
 set autoread
 
-" Try to store all swp files in Dropbox
-set dir=$HOME/Dropbox/dotfiles/.tmp/.vim//,.
+" Try to store all swp files in one place
+silent !mkdir $HOME/.vimswp
+set dir=$HOME/.vimswp//
 
 " No annoying blinking or noise
 set novisualbell 
