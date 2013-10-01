@@ -56,7 +56,9 @@ set undoreload=9999
 set autoread
 
 " Try to store all swp files in one place
-silent !mkdir $HOME/.vimswp
+if !isdirectory(expand("$HOME/.vimswp"))
+    mkdir -p $HOME/.vimswp
+end
 set dir=$HOME/.vimswp//
 
 " No annoying blinking or noise
