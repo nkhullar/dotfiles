@@ -1,6 +1,6 @@
 [core]
 	editor = vim
-	excludesfile = ~/.gitignore_global
+	excludesfile = $HOME/.gitignore_global
 [user]
 	name = Jinghao Shi
 	email = jinghaos@buffalo.edu
