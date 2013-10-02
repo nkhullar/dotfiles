@@ -40,25 +40,27 @@ set showcmd
 set history=9999
 
 " Persist undo
-if isdirectory(expand("$HOME/Dropbox/.vimundo"))
-    set undodir=$HOME/Dropbox/.vimundo//
-else
-    silent !mkdir -p $HOME/.vimundo
-    set undodir=$HOME/.vimundo//
-end
 set undofile
 "maximum number of changes that can be undone
 set undolevels=9999 
 "maximum number lines to save for undo on a buffer reload
 set undoreload=9999 
 
+" If have Dropbox installed, create a undo dir in it
+if isdirectory(expand("$HOME/Dropbox/"))
+    silent !mkdir -p $HOME/Dropbox/.vimundo >/dev/null 2>&1
+    set undodir=$HOME/Dropbox/.vimundo//
+else
+    " Otherwise, keep them in home
+    silent !mkdir -p $HOME/.vimundo >/dev/null 2>&1
+    set undodir=$HOME/.vimundo//
+end
+
 " Set to auto read when a file is changed from the outside
 set autoread
 
 " Try to store all swp files in one place
-if !isdirectory(expand("$HOME/.vimswp"))
-    silent !mkdir -p $HOME/.vimswp
-end
+silent !mkdir -p $HOME/.vimswp >/dev/null 2>&1
 set dir=$HOME/.vimswp//
 
 " No annoying blinking or noise
