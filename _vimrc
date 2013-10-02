@@ -57,7 +57,7 @@ set autoread
 
 " Try to store all swp files in one place
 if !isdirectory(expand("$HOME/.vimswp"))
-    mkdir -p $HOME/.vimswp
+    silent !mkdir -p $HOME/.vimswp
 end
 set dir=$HOME/.vimswp//
 
