@@ -123,5 +123,11 @@ then
 
 fi
 
+teamocil >/dev/null 2>&1
+if [ $? -ne 127 ]
+then
+    complete -W "$(teamocil --list)" teamocil
+fi
+
 # fire up eclimd daemon if haven't done so
 # pgrep "eclimd" >/dev/null || /opt/eclipse/eclimd >/dev/null 2>&1 &
