@@ -161,6 +161,9 @@ function SetPythonOptions()
 
     setlocal smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
 
+    " do not remove indent of #
+    inoremap # X#
+
     " more syntax highlighting
     let python_highlight_all = 1
 
