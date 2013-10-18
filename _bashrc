@@ -98,6 +98,7 @@ export LANG=en_US
 
 export PATH=$HOME/local/bin:$HOME/bin:/util/bin/:$PATH:.
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/local/lib
+export MANPATH=$HOME/local/share/man:$(manpath)
 
 export XTERM=xterm-256color
 export TERM=xterm-256color
