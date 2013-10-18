@@ -40,11 +40,13 @@ set showcmd
 set history=9999
 
 " Persist undo
-set undofile
-"maximum number of changes that can be undone
-set undolevels=9999 
-"maximum number lines to save for undo on a buffer reload
-set undoreload=9999 
+if version >= 703
+    set undofile
+    "maximum number of changes that can be undone
+    set undolevels=9999 
+    "maximum number lines to save for undo on a buffer reload
+    set undoreload=9999 
+endif
 
 " If have Dropbox installed, create a undo dir in it
 if isdirectory(expand("$HOME/Dropbox/"))
@@ -169,9 +171,9 @@ function SetPythonOptions()
 
     " Wrap at 80 chars for comments.
     setlocal formatoptions=cq textwidth=80 foldignore= wildignore+=*.py[co]
-	
-	" highlight current column
-	setlocal cursorcolumn
+
+    " highlight current column
+    setlocal cursorcolumn
     hi CursorColumn cterm=None ctermbg=DarkGrey
 
 endfunction
@@ -192,8 +194,8 @@ function SetXmlOptions()
     setlocal softtabstop=2
     setlocal shiftwidth=2
 
-	" highlight current column
-	setlocal cursorcolumn
+    " highlight current column
+    setlocal cursorcolumn
     hi CursorColumn cterm=None ctermbg=DarkGrey
 
     setlocal textwidth=0
@@ -378,7 +380,9 @@ let g:instant_markdown_slow = 0
 
 " highlight the column after textwidth
 set textwidth=80
-set colorcolumn=+1
+if version >= 703
+    set colorcolumn=+1
+endif
 hi ColorColumn ctermbg=DarkGrey
 
 hi Pmenu cterm=bold ctermbg=5 ctermfg=White
@@ -463,92 +467,92 @@ command! -bang WatchForChangesAllFile           :call WatchForChanges('*', {'tog
 "     (Presumably, having too much going on for those events could slow things down,
 "     since they are triggered so frequently...)
 function! WatchForChanges(bufname, ...)
-  " Figure out which options are in effect
-  if a:bufname == '*'
-    let id = 'WatchForChanges'.'AnyBuffer'
-    " If you try to do checktime *, you'll get E93: More than one match for * is given
-    let bufspec = ''
-  else
-    if bufnr(a:bufname) == -1
-      echoerr "Buffer " . a:bufname . " doesn't exist"
-      return
-    end
-    let id = 'WatchForChanges'.bufnr(a:bufname)
-    let bufspec = a:bufname
-  end
-
-  if len(a:000) == 0
-    let options = {}
-  else
-    if type(a:1) == type({})
-      let options = a:1
+    " Figure out which options are in effect
+    if a:bufname == '*'
+        let id = 'WatchForChanges'.'AnyBuffer'
+        " If you try to do checktime *, you'll get E93: More than one match for * is given
+        let bufspec = ''
     else
-      echoerr "Argument must be a Dict"
+        if bufnr(a:bufname) == -1
+            echoerr "Buffer " . a:bufname . " doesn't exist"
+            return
+        end
+        let id = 'WatchForChanges'.bufnr(a:bufname)
+        let bufspec = a:bufname
     end
-  end
-  let autoread    = has_key(options, 'autoread')    ? options['autoread']    : 0
-  let toggle      = has_key(options, 'toggle')      ? options['toggle']      : 0
-  let disable     = has_key(options, 'disable')     ? options['disable']     : 0
-  let more_events = has_key(options, 'more_events') ? options['more_events'] : 1
-  let while_in_this_buffer_only = has_key(options, 'while_in_this_buffer_only') ? options['while_in_this_buffer_only'] : 0
 
-  if while_in_this_buffer_only
-    let event_bufspec = a:bufname
-  else
-    let event_bufspec = '*'
-  end
+    if len(a:000) == 0
+        let options = {}
+    else
+        if type(a:1) == type({})
+            let options = a:1
+        else
+            echoerr "Argument must be a Dict"
+        end
+    end
+    let autoread    = has_key(options, 'autoread')    ? options['autoread']    : 0
+    let toggle      = has_key(options, 'toggle')      ? options['toggle']      : 0
+    let disable     = has_key(options, 'disable')     ? options['disable']     : 0
+    let more_events = has_key(options, 'more_events') ? options['more_events'] : 1
+    let while_in_this_buffer_only = has_key(options, 'while_in_this_buffer_only') ? options['while_in_this_buffer_only'] : 0
 
-  let reg_saved = @"
-  "let autoread_saved = &autoread
-  let msg = "\n"
+    if while_in_this_buffer_only
+        let event_bufspec = a:bufname
+    else
+        let event_bufspec = '*'
+    end
 
-  " Check to see if the autocommand already exists
-  redir @"
+    let reg_saved = @"
+    "let autoread_saved = &autoread
+    let msg = "\n"
+
+    " Check to see if the autocommand already exists
+    redir @"
     silent! exec 'au '.id
-  redir END
-  let l:defined = (@" !~ 'E216: No such group or event:')
+    redir END
+    let l:defined = (@" !~ 'E216: No such group or event:')
 
-  " If not yet defined...
-  if !l:defined
-    if l:autoread
-      let msg = msg . 'Autoread enabled - '
-      if a:bufname == '*'
-        set autoread
-      else
-        setlocal autoread
-      end
-    end
-    silent! exec 'augroup '.id
-      if a:bufname != '*'
-        "exec "au BufDelete    ".a:bufname . " :silent! au! ".id . " | silent! augroup! ".id
-        "exec "au BufDelete    ".a:bufname . " :echomsg 'Removing autocommands for ".id."' | au! ".id . " | augroup! ".id
-        exec "au BufDelete    ".a:bufname . " execute 'au! ".id."' | execute 'augroup! ".id."'"
-      end
+    " If not yet defined...
+    if !l:defined
+        if l:autoread
+            let msg = msg . 'Autoread enabled - '
+            if a:bufname == '*'
+                set autoread
+            else
+                setlocal autoread
+            end
+        end
+        silent! exec 'augroup '.id
+        if a:bufname != '*'
+            "exec "au BufDelete    ".a:bufname . " :silent! au! ".id . " | silent! augroup! ".id
+            "exec "au BufDelete    ".a:bufname . " :echomsg 'Removing autocommands for ".id."' | au! ".id . " | augroup! ".id
+            exec "au BufDelete    ".a:bufname . " execute 'au! ".id."' | execute 'augroup! ".id."'"
+        end
         exec "au BufEnter     ".event_bufspec . " :checktime ".bufspec
         exec "au CursorHold   ".event_bufspec . " :checktime ".bufspec
         exec "au CursorHoldI  ".event_bufspec . " :checktime ".bufspec
 
-      " The following events might slow things down so we provide a way to disable them...
-      " vim docs warn:
-      "   Careful: Don't do anything that the user does
-      "   not expect or that is slow.
-      if more_events
-        exec "au CursorMoved  ".event_bufspec . " :checktime ".bufspec
-        exec "au CursorMovedI ".event_bufspec . " :checktime ".bufspec
-      end
+        " The following events might slow things down so we provide a way to disable them...
+        " vim docs warn:
+        "   Careful: Don't do anything that the user does
+        "   not expect or that is slow.
+        if more_events
+            exec "au CursorMoved  ".event_bufspec . " :checktime ".bufspec
+            exec "au CursorMovedI ".event_bufspec . " :checktime ".bufspec
+        end
     augroup END
     let msg = msg . 'Now watching ' . bufspec . ' for external updates...'
-  end
+end
 
-  " If they want to disable it, or it is defined and they want to toggle it,
-  if l:disable || (l:toggle && l:defined)
+" If they want to disable it, or it is defined and they want to toggle it,
+if l:disable || (l:toggle && l:defined)
     if l:autoread
-      let msg = msg . 'Autoread disabled - '
-      if a:bufname == '*'
-        set noautoread
-      else
-        setlocal noautoread
-      end
+        let msg = msg . 'Autoread disabled - '
+        if a:bufname == '*'
+            set noautoread
+        else
+            setlocal noautoread
+        end
     end
     " Using an autogroup allows us to remove it easily with the following
     " command. If we do not use an autogroup, we cannot remove this
@@ -557,12 +561,12 @@ function! WatchForChanges(bufname, ...)
     silent! exec 'au! '.id
     silent! exec 'augroup! '.id
     let msg = msg . 'No longer watching ' . bufspec . ' for external updates.'
-  elseif l:defined
+elseif l:defined
     let msg = msg . 'Already watching ' . bufspec . ' for external updates'
-  end
+end
 
-  " echo msg
-  let @"=reg_saved
+" echo msg
+let @"=reg_saved
 endfunction
 
 
