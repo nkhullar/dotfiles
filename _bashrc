@@ -97,8 +97,10 @@ export PS1="[\u@\h:\w]$ "
 export LANG=en_US
 
 export PATH=$HOME/local/bin:$HOME/bin:/util/bin/:$PATH:.
+export LD_LIBRARY_PATH=$HOME/local/lib
 
 export XTERM=xterm
+export TERM=xterm
 
 export TEAMOCIL_PATH=$HOME/Dropbox/.teamocil
 
