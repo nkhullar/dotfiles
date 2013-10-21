@@ -40,23 +40,23 @@ set showcmd
 set history=9999
 
 " Persist undo
-if version >= 703
+if has('persistent_undo')
     set undofile
     "maximum number of changes that can be undone
     set undolevels=9999 
     "maximum number lines to save for undo on a buffer reload
     set undoreload=9999 
-endif
 
-" If have Dropbox installed, create a undo dir in it
-if isdirectory(expand("$HOME/Dropbox/"))
-    silent !mkdir -p $HOME/Dropbox/.vimundo >/dev/null 2>&1
-    set undodir=$HOME/Dropbox/.vimundo//
-else
-    " Otherwise, keep them in home
-    silent !mkdir -p $HOME/.vimundo >/dev/null 2>&1
-    set undodir=$HOME/.vimundo//
-end
+    " If have Dropbox installed, create a undo dir in it
+    if isdirectory(expand("$HOME/Dropbox/"))
+        silent !mkdir -p $HOME/Dropbox/.vimundo >/dev/null 2>&1
+        set undodir=$HOME/Dropbox/.vimundo//
+    else
+        " Otherwise, keep them in home
+        silent !mkdir -p $HOME/.vimundo >/dev/null 2>&1
+        set undodir=$HOME/.vimundo//
+    end
+endif
 
 " Set to auto read when a file is changed from the outside
 set autoread
