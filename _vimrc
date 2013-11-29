@@ -338,15 +338,11 @@ if &term =~ '^screen'
     execute "set <xLeft>=\e[1;*D"
 endif
 
-" Switching between windows use Ctrl + arrow
-nmap <C-Up>        :wincmd k<CR>
-nmap <C-Down>      :wincmd j<CR>
-nmap <C-Left>      :wincmd h<CR>
-nmap <C-Right>     :wincmd l<CR>
-
-" Switch between tabs use ctrl + h,l
-nmap <C-h>      gT
-nmap <C-l>      gt
+" Switching between windows use Ctrl + hjkl
+nmap <C-k>        :wincmd k<CR>
+nmap <C-j>      :wincmd j<CR>
+nmap <C-h>      :wincmd h<CR>
+nmap <C-l>     :wincmd l<CR>
 
 " yank to the system register (*) by default
 set clipboard=unnamedplus
