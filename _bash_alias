@@ -19,3 +19,5 @@ function ll() {
 unalias ssh >/dev/null 2>&1
 # colorful term
 alias ssh="TERM=xterm ssh"
+
+alias xclip="xclip -selection c"
