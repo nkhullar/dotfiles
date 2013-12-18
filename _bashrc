@@ -111,7 +111,7 @@ export EDITOR=vim
 if [ `hostname -s` == "palm" ]
 then
     ANDROID_SDK_ROOT=/opt/android-sdk-linux
-    OS161_ROOT=$HOME/Dropbox/os161
+    OS161_ROOT=$HOME/projects/courses/os161
 
     AOSP_TOP="$HOME/aosp"
     export USE_CCACHE=1
