@@ -113,9 +113,8 @@ then
     ANDROID_SDK_ROOT=/opt/android-sdk-linux
     OS161_ROOT=$HOME/projects/courses/os161
 
-    AOSP_TOP="$HOME/aosp"
     export USE_CCACHE=1
-    export CCACHE_DIR=$AOSP_TOP/.cache
+    export CCACHE_DIR=$HOME/.cache
 
     export PATH=$PATH:$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools
 
