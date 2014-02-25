@@ -202,9 +202,17 @@ function SetXmlOptions()
     setlocal colorcolumn=
 endfunction
 
+function SetTexOptions()
+    set tabstop=2
+    set softtabstop=2
+    set shiftwidth=2
+endfunction
+
+
 autocmd FileType python call SetPythonOptions()
 autocmd FileType ruby call SetRubyOptions()
 autocmd FileType xml,xsd,html call SetXmlOptions()
+autocmd FileType tex call SetTexOptions()
 
 
 """""""""""""""
