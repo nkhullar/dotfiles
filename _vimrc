@@ -383,11 +383,6 @@ hi ColorColumn ctermbg=DarkGrey
 
 hi Pmenu cterm=bold ctermbg=5 ctermfg=White
 
-" makes vim capable of guessing based on the filetype 
-" and enable file type based plugin
-" This must be put at the end of vimrc
-filetype on
-filetype plugin indent on
 
 """""""""""""""""""""""""""""""""""""""
 " Have VIM auto load changed files
@@ -567,3 +562,10 @@ endfunction
 
 
 au BufNewFile,BufRead *.log :WatchForChanges
+
+" makes vim capable of guessing based on the filetype 
+" and enable file type based plugin
+" This must be put at the end of vimrc
+filetype on
+filetype plugin indent on
+filetype plugin on
