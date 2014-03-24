@@ -139,7 +139,7 @@ command! Wq wq
 " If, for instance, you want your text to be nicely formatted in paragraphs
 " with no more than 78 characters on each line, then you could simply use it
 " as:
-set formatprg=par\ -w79
+set formatprg="fmt -w 79"
 
 " Remap ctrl-] to Enter and ctrl-T to esc to make help sane.
 " :au filetype help :nnoremap <buffer><CR> <c-]>
@@ -202,9 +202,17 @@ function SetXmlOptions()
     setlocal colorcolumn=
 endfunction
 
+function SetTexOptions()
+    set tabstop=2
+    set softtabstop=2
+    set shiftwidth=2
+endfunction
+
+
 autocmd FileType python call SetPythonOptions()
 autocmd FileType ruby call SetRubyOptions()
 autocmd FileType xml,xsd,html call SetXmlOptions()
+autocmd FileType tex call SetTexOptions()
 
 
 """""""""""""""
