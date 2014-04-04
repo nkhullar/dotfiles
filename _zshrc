@@ -53,8 +53,18 @@ plugins=(git vi-mode command-not-found)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+ANDROID_SDK_ROOT=/opt/android-sdk-linux
+OS161_ROOT=$HOME/projects/courses/os161
+
+export USE_CCACHE=1
+export CCACHE_DIR=$HOME/.cache
+
+export PYTEX=$HOME/Dropbox/Documents/research/code.pytex
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$PATH:$OS161_ROOT/tools/bin
+export PATH=$PATH:$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
