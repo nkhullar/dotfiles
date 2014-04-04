@@ -1,7 +1,3 @@
-# to make the directory aliases work
-unalias cd >/dev/null 2>&1
-alias cd="cd "
-
 # careful with copy/mv/rm stuff
 unalias cp mv rm >/dev/null 2>&1
 alias cp="cp -v"

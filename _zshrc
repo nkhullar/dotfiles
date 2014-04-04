@@ -1,58 +1,153 @@
-# Path to your oh-my-zsh installation.
-export ZSH=$HOME/projects/oh-my-zsh
+###############################################################################
+#  setopt
+###############################################################################
+#
+# ===== Basics
+setopt no_beep # don't beep on error
+# setopt interactive_comments # Allow comments even in interactive shells (especially for Muness)
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell"
+# ===== Changing Directories
+setopt auto_cd # If you type foo, and it isn't a command, and it is a directory in your cdpath, go there
+setopt cdablevarS # if argument to cd is the name of a parameter whose value is a valid directory, it will become the current directory
+setopt pushd_ignore_dups # don't push multiple copies of the same directory onto the directory stack
 
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+# ===== Expansion and Globbing
+setopt extended_glob # treat #, ~, and ^ as part of patterns for filename generation
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+# ===== History
+setopt append_history # Allow multiple terminal sessions to all append to one zsh command history
+setopt extended_history # save timestamp of command and duration
+setopt inc_append_history # Add comamnds as they are typed, don't wait until shell exit
+setopt hist_expire_dups_first # when trimming history, lose oldest duplicates first
+setopt hist_ignore_dups # Do not write events to history that are duplicates of previous events
+setopt hist_ignore_space # remove command line from history list when first character on the line is a space
+setopt hist_find_no_dups # When searching history don't display results already cycled through twice
+setopt hist_reduce_blanks # Remove extra blanks from each command line being added to history
+setopt hist_verify # don't execute, just expand history
+setopt share_history # imports new commands and appends typed commands to history
 
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
+# ===== Completion 
+setopt always_to_end # When completing from the middle of a word, move the cursor to the end of the word    
+setopt auto_menu # show completion menu on successive tab press. needs unsetop menu_complete to work
+setopt auto_name_dirs # any parameter that is set to the absolute name of a directory immediately becomes a name for that directory
+setopt complete_in_word # Allow completion from within a word/phrase
 
-# Uncomment the following line to change how often to auto-update (in days).
-export UPDATE_ZSH_DAYS=30
+unsetopt menu_complete # do not autoselect the first completion entry
 
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
+# ===== Correction
+setopt correct # spelling correction for commands
+setopt correctall # spelling correction for arguments
 
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+# ===== Prompt
+setopt prompt_subst # Enable parameter expansion, command substitution, and arithmetic expansion in the prompt
+setopt transient_rprompt # only show the rprompt on the current prompt
 
-# Uncomment the following line to disable command auto-correction.
-# DISABLE_CORRECTION="true"
+# ===== Scripts and Functions
+setopt multios # perform implicit tees or cats when multiple redirections are attempted
 
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
 
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+################################################################################
+# prompt
+################################################################################
 
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
+#setopt promptsubst
+autoload -U colors && colors # Enable colors in prompt
 
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
+function prompt_char {
+	if [ $UID -eq 0 ]; then echo "#"; else echo $; fi
+}
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git vi-mode command-not-found)
+PROMPT='%(!.%{$fg_bold[red]%}.%{$fg_bold[green]%}%n@)%m %{$fg_bold[blue]%}%(!.%1~.%~) %_$(prompt_char)%{$reset_color%} '
 
-source $ZSH/oh-my-zsh.sh
 
-# User configuration
+###############################################################################
+# completion
+###############################################################################
+
+autoload -U compinit && compinit                                                                                       
+zmodload -i zsh/complist
+
+# man zshcontrib
+zstyle ':vcs_info:*' actionformats '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{3}|%F{1}%a%F{5}]%f '
+zstyle ':vcs_info:*' formats '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{5}]%f '
+zstyle ':vcs_info:*' enable git #svn cvs 
+
+# Enable completion caching, use rehash to clear
+zstyle ':completion::complete:*' use-cache on
+zstyle ':completion::complete:*' cache-path ~/.zsh/cache/$HOST
+
+# Fallback to built in ls colors
+zstyle ':completion:*' list-colors ''
+
+# Make the list prompt friendly
+zstyle ':completion:*' list-prompt '%SAt %p: Hit TAB for more, or the character to insert%s'
+
+# Make the selection prompt friendly when there are a lot of choices
+zstyle ':completion:*' select-prompt '%SScrolling active: current selection at %p%s'
+
+# Add simple colors to kill
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
+
+# list of completers to use
+zstyle ':completion:*::::' completer _expand _complete _ignored _approximate
+
+zstyle ':completion:*' menu select=1 _complete _ignored _approximate
+
+# insert all expansions for expand completer
+# zstyle ':completion:*:expand:*' tag-order all-expansions
+ 
+# match uppercase from lowercase
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+ 
+# offer indexes before parameters in subscripts
+zstyle ':completion:*:*:-subscript-:*' tag-order indexes parameters
+
+# formatting and messages
+zstyle ':completion:*' verbose yes
+zstyle ':completion:*:descriptions' format '%B%d%b'
+zstyle ':completion:*:messages' format '%d'
+zstyle ':completion:*:warnings' format 'No matches for: %d'
+zstyle ':completion:*:corrections' format '%B%d (errors: %e)%b'
+zstyle ':completion:*' group-name ''
+ 
+# ignore completion functions (until the _ignored completer)
+zstyle ':completion:*:functions' ignored-patterns '_*'
+zstyle ':completion:*:scp:*' tag-order files users 'hosts:-host hosts:-domain:domain hosts:-ipaddr"IP\ Address *'
+zstyle ':completion:*:scp:*' group-order files all-files users hosts-domain hosts-host hosts-ipaddr
+zstyle ':completion:*:ssh:*' tag-order users 'hosts:-host hosts:-domain:domain hosts:-ipaddr"IP\ Address *'
+zstyle ':completion:*:ssh:*' group-order hosts-domain hosts-host users hosts-ipaddr
+zstyle '*' single-ignored show
+
+
+################################################################################
+# bindkey
+################################################################################
+
+bindkey -v   # Default to standard vi bindings, regardless of editor string
+bindkey "^r"      history-incremental-search-backward  # ctrl-r
+bindkey "^p"      history-search-forward               # down arrow
+bindkey "^n"      history-search-backward              # up arrow
+
+bindkey "^W" backward-kill-word    # vi-backward-kill-word
+bindkey "^H" backward-delete-char  # vi-backward-delete-char
+bindkey "^U" backward-kill-line    # vi-kill-line
+bindkey "^?" backward-delete-char  # vi-backward-delete-char
+
+
+################################################################################
+# history
+################################################################################
+
+# HISTORY
+HISTSIZE=10000
+SAVEHIST=9000
+HISTFILE=~/.zsh_history
+
+
+################################################################################
+# Custome configurations
+################################################################################
+
 ANDROID_SDK_ROOT=/opt/android-sdk-linux
 OS161_ROOT=$HOME/projects/courses/os161
 
@@ -65,20 +160,13 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=$PATH:$OS161_ROOT/tools/bin
 export PATH=$PATH:$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools
 
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
 export LANG=en_US.UTF-8
 
-# Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-    export EDITOR='vim'
-else
-    export EDITOR='mvim'
+export EDITOR='vim'
+
+export DISABLE_AUTO_TITLE="true"
+
+if [[ -e "$HOME/.aliases" ]]
+then
+    . $HOME/.aliases
 fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-export SSH_KEY_PATH="~/.ssh/id_rsa"
