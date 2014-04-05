@@ -20,7 +20,7 @@ ZSH_TMUX_AUTOQUIT="false"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+CASE_SENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
@@ -60,7 +60,7 @@ DISABLE_CORRECTION="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git git-extras last-working-dir tmux pip python repo z common-aliases command-not-found)
+plugins=(git git-extras tmux pip python repo z common-aliases command-not-found)
 
 source $ZSH/oh-my-zsh.sh
 
