@@ -7,6 +7,13 @@ export ZSH=$HOME/projects/oh-my-zsh
 # time that oh-my-zsh is loaded.
 ZSH_THEME="jinghao"
 
+################################################################################
+# Tmux
+################################################################################
+ZSH_TMUX_AUTOSTART="true"
+ZSH_TMUX_AUTOCONNECT="false"
+ZSH_TMUX_AUTOQUIT="false"
+
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
