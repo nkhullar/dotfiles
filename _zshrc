@@ -94,7 +94,7 @@ HISTFILE=~/.zsh_history
 ################################################################################
 unalias ll
 function ll() {
-    ls -halt $1 | more
+    ls -al $1 | more
 }
 
 
