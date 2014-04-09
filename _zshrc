@@ -104,6 +104,8 @@ alias mv="mv -iv"
 unalias rm >/dev/null 2>&1
 alias rm="rm -iv"
 
+unalias cp >/dev/null 2>&1
+alias cp="cp -iv"
 
 ################################################################################
 # Custome configurations
