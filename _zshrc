@@ -96,6 +96,7 @@ unalias ll
 function ll() {
     ls -al $1 | more
 }
+alias rake="noglob rake"
 
 
 ################################################################################
