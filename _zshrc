@@ -110,8 +110,8 @@ unalias cp >/dev/null 2>&1
 alias cp="cp -iv"
 
 alias ln="ln -sv"
-
 alias tree="tree -C"
+alias ta='tmux attach -t'
 
 ################################################################################
 # Custome configurations
