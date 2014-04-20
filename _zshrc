@@ -111,7 +111,11 @@ alias cp="cp -iv"
 
 alias ln="ln -sv"
 alias tree="tree -C"
-alias ta='tmux attach -t'
+
+
+alias t="tmux"
+alias tl="tmux ls"
+alias ta="tmux attach -t"
 
 ################################################################################
 # Custome configurations
@@ -137,3 +141,6 @@ export EDITOR='vim'
 export DISABLE_AUTO_TITLE="true"
 
 export TERM=xterm
+
+# disable overlay scroll bar, some application (wireshark) doesn't like it
+export LIBOVERLAY_SCROLLBAR=0
