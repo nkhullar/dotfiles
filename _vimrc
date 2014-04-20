@@ -577,3 +577,7 @@ au BufNewFile,BufRead *.log :WatchForChanges
 filetype on
 filetype plugin indent on
 filetype plugin on
+
+if $TMUX == ''
+    set clipboard+=unamed
+endif
