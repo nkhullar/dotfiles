@@ -154,40 +154,6 @@ set formatprg="fmt -w 79"
 set ofu=syntaxcomplete#Complete
 
 
-" Special indent settings for python
-function SetPythonOptions()
-    " indent
-    setlocal tabstop=2
-    setlocal softtabstop=2
-    setlocal shiftwidth=2
-
-    setlocal smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
-
-    " do not remove indent of #
-    inoremap # X#
-
-    " more syntax highlighting
-    let python_highlight_all = 1
-
-    " Wrap at 80 chars for comments.
-    setlocal formatoptions=cq textwidth=80 foldignore= wildignore+=*.py[co]
-
-    " highlight current column
-    setlocal cursorcolumn
-    hi CursorColumn cterm=None ctermbg=DarkGrey
-
-endfunction
-
-function SetRubyOptions()
-    " indent
-    setlocal tabstop=2
-    setlocal softtabstop=2
-    setlocal shiftwidth=2
-
-    setlocal colorcolumn=
-endfunction
-
-
 function SetXmlOptions()
     " indent
     setlocal tabstop=2
@@ -208,9 +174,6 @@ function SetTexOptions()
     set shiftwidth=2
 endfunction
 
-
-autocmd FileType python call SetPythonOptions()
-autocmd FileType ruby call SetRubyOptions()
 autocmd FileType xml,xsd,html call SetXmlOptions()
 autocmd FileType tex call SetTexOptions()
 
@@ -579,5 +542,5 @@ filetype plugin indent on
 filetype plugin on
 
 if $TMUX == ''
-    set clipboard+=unamed
+    set clipboard+=unnamed
 endif
