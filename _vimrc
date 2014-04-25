@@ -152,6 +152,16 @@ hi CursorLineNR cterm=Bold ctermbg=Cyan
 hi StatusLine cterm=bold ctermbg=DarkGray ctermfg=White
 
 
+" git gutter
+hi GitGutterAdd cterm=bold ctermfg=Green
+hi GitGutterChange cterm=bold ctermfg=Yellow
+hi GitGutterDelete cterm=bold ctermfg=Red
+hi GitGutterChangeDelete cterm=bold ctermfg=Yellow
+
+
+
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Key mapping
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
