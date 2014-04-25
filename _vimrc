@@ -1,5 +1,5 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Vbundle
+" Vundle config
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -16,6 +16,9 @@ Plugin 'airblade/vim-gitgutter'
 
 " eclim
 Plugin 'initrc/eclim-vundle'
+
+" pyflakes
+Plugin 'kevinw/pyflakes-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -397,6 +400,19 @@ set clipboard=unnamedplus
 " Auto open project tree view
 let g:EclimProjectTreeAutoOpen=1 
 let g:EclimProjectTreeExpandPathOnOpen=1
+
+
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Git gutter
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" always show sign column
+let g:gitgutter_sign_column_always = 1
+
+
 
 
 
