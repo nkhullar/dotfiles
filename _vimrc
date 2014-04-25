@@ -388,6 +388,16 @@ set clipboard=unnamedplus
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Eclim
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Auto open project tree view
+let g:EclimProjectTreeAutoOpen=1 
+let g:EclimProjectTreeExpandPathOnOpen=1
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Have VIM auto load changed files
 " from http://vim.wikia.com/wiki/Have_Vim_check_automatically_if_the_file_has_changed_externally
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
