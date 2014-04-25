@@ -246,14 +246,6 @@ augroup END
 
 
 """"""""""""""""""
-"" Latex-suite
-""""""""""""""""""
-let g:tex_flavor='latex'
-set grepprg=grep\ -nH\ $*
-let g:Tex_Folding=0
-set iskeyword+=:
-
-""""""""""""""""""
 "" Cscope settings
 """"""""""""""""""
 if has("cscope")
