@@ -252,15 +252,9 @@ if has('persistent_undo')
     "maximum number lines to save for undo on a buffer reload
     set undoreload=1000
 
-    " If have Dropbox installed, create a undo dir in it
-    if isdirectory(expand("$HOME/Dropbox/"))
-        silent !mkdir -p $HOME/Dropbox/.vimundo >/dev/null 2>&1
-        set undodir=$HOME/Dropbox/.vimundo//
-    else
-        " Otherwise, keep them in home
-        silent !mkdir -p $HOME/.vimundo >/dev/null 2>&1
-        set undodir=$HOME/.vimundo//
-    end
+    " undo dir
+    silent !mkdir -p $HOME/.vimundo >/dev/null 2>&1
+    set undodir=$HOME/.vimundo//
 endif
 
 
