@@ -17,8 +17,11 @@ Plugin 'airblade/vim-gitgutter'
 " eclim
 Plugin 'initrc/eclim-vundle'
 
-" pyflakes
-Plugin 'kevinw/pyflakes-vim'
+" pyflakes (seems deprecated)
+" Plugin 'kevinw/pyflakes-vim'
+
+" syntastic
+Plugin 'scrooloose/syntastic'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
