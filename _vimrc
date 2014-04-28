@@ -93,6 +93,12 @@ endif
 " hightlight current line num
 set cursorline
 
+" indicate a fast tty connection, more smoothness
+set ttyfast
+
+" no scratch window when complete
+set completeopt=menu
+
 
 
 
@@ -595,4 +601,5 @@ function! WatchForChanges(bufname, ...)
     " echo msg
     let @"=reg_saved
 endfunction
-au BufNewFile,BufRead *.log :WatchForChanges
+
+au BufNewFile,BufRead *.log :WatchForChanges!
