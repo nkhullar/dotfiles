@@ -102,6 +102,10 @@ set ttyfast
 " no scratch window when complete
 set completeopt=menu
 
+" tab complete in command mode
+set wildmode=longest,full
+set wildmenu
+
 
 
 
