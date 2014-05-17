@@ -117,6 +117,9 @@ alias t="tmux"
 alias tl="tmux ls"
 alias ta="tmux attach -t"
 
+alias sudo='sudo env PATH=$PATH'
+
+
 ################################################################################
 # Custome configurations
 ################################################################################
