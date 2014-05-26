@@ -106,6 +106,9 @@ set completeopt=menu
 set wildmode=longest,full
 set wildmenu
 
+" ctags
+set tags=./tags;
+
 
 
 
